@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafaf9; /* stone-50 */
-  --foreground: #1c1917; /* stone-900 */
-  --primary: #d4af37; /* Gold */
+  --background: #f4efe8; /* Cream/Beige */
+  --foreground: #4a3b32; /* Warm dark text */
+  --primary: #993333; /* Crimson Red */
   --primary-foreground: #ffffff;
-  --secondary: #1e3a8a; /* Deep Navy (blue-900) */
+  --secondary: #993333; /* Use primary for secondary elements to keep it monochromatic */
   --secondary-foreground: #ffffff;
-  --card: #ffffff;
-  --card-foreground: #1c1917;
-  --border: #e7e5e4;
-  --input: #e7e5e4;
-  --ring: #d4af37;
+  --card: #fdfbf7; /* Lighter cream for cards */
+  --card-foreground: #4a3b32;
+  --border: #993333; /* Red borders */
+  --input: #993333; /* Red input borders */
+  --ring: #993333;
 }
 
 @theme inline {
@@ -29,6 +29,10 @@
   
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
