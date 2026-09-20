@@ -1,68 +1,75 @@
 import React from 'react';
-import { MousePointerClick, Settings2, CheckCircle2 } from 'lucide-react';
+import { Palette, Pencil, Send } from 'lucide-react';
 
 const steps = [
   {
-    number: '01',
-    title: 'Select Event Type',
-    description: 'Choose from our extensive collection of event categories tailored to your celebration.',
-    icon: MousePointerClick,
+    icon: Palette,
+    step: 'Pick your design.',
+    description: 'Choose a style you love.',
   },
   {
-    number: '02',
-    title: 'Customize Details',
-    description: 'Provide your specific details, preferences, and any special requests for the design.',
-    icon: Settings2,
+    icon: Pencil,
+    step: 'Make it yours.',
+    description: 'Add your details, photos & colors.',
   },
   {
-    number: '03',
-    title: 'Confirm Booking',
-    description: 'Review your order and securely confirm your booking to get the process started.',
-    icon: CheckCircle2,
+    icon: Send,
+    step: 'Send it.',
+    description: 'Share instantly with your guests.',
   },
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="py-24 bg-background">
+    <section id="how-it-works" className="py-16 md:py-28 bg-primary">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-serif font-bold text-primary sm:text-4xl">
-            How It Works
+        {/* Section heading */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="text-primary-foreground/60 uppercase tracking-[0.2em] text-xs font-semibold mb-3">Three easy steps</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary-foreground leading-tight">
+            Simple from start to send.
           </h2>
-          <p className="mt-4 text-lg text-foreground">
-            Getting your custom invitations designed and delivered is as easy as 1-2-3.
-          </p>
         </div>
 
-        <div className="relative">
-          {/* Removing connecting line for the block style */}
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <div key={index} className="relative flex flex-col items-center text-center bg-primary rounded-lg p-8 group">
-                  <div className="text-primary-foreground font-bold text-xl mb-4 opacity-80">
-                    {index + 1}.
-                  </div>
-                  <div className="flex items-center justify-center mb-6">
-                    <Icon className="w-12 h-12 text-primary-foreground group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-lg font-bold text-primary-foreground mb-2 leading-tight">{step.title}</h3>
-                  
-                  {/* Arrow to the next item (only on desktop) */}
-                  {index < steps.length - 1 && (
-                    <div className="hidden md:block absolute top-1/2 -right-4 -translate-y-1/2 translate-x-1/2 z-20 text-primary-foreground">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </div>
-                  )}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <div
+                key={index}
+                className="relative flex flex-col items-center text-center bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-2xl p-8 md:p-10 group hover:bg-primary-foreground/20 transition-all duration-300"
+              >
+                {/* Step number */}
+                <span className="absolute top-5 left-6 text-primary-foreground/20 text-5xl font-bold font-serif select-none">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+
+                {/* Icon */}
+                <div className="mt-6 mb-6 p-4 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-8 h-8 text-primary-foreground" strokeWidth={1.5} />
                 </div>
-              );
-            })}
-          </div>
+
+                {/* Title — exact tagline */}
+                <h3 className="text-xl md:text-2xl font-serif font-bold text-primary-foreground mb-2">
+                  {step.step}
+                </h3>
+
+                {/* Sub — exact tagline */}
+                <p className="text-primary-foreground/70 text-sm md:text-base leading-relaxed">
+                  {step.description}
+                </p>
+
+                {/* Arrow to next (desktop only) */}
+                {index < steps.length - 1 && (
+                  <div className="hidden md:block absolute top-1/2 -right-4 -translate-y-1/2 z-20 text-primary-foreground/40">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

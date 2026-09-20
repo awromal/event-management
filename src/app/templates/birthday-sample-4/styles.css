@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Montserrat:wght@300;400;500;600&display=swap');
+
+.classy-template {
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #FFFFFF;
+    color: #1A1A1A;
+    overflow-x: hidden;
+}
+
+.font-classy {
+    font-family: 'Cinzel Decorative', serif !important;
+}
+
+/* Elegant Borders */
+.gold-border {
+    position: relative;
+}
+.gold-border::before {
+    content: '';
+    position: absolute;
+    inset: 16px;
+    border: 1px solid #D4AF37;
+    pointer-events: none;
+    z-index: 40;
+}
+.gold-border::after {
+    content: '';
+    position: absolute;
+    inset: 22px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    pointer-events: none;
+    z-index: 40;
+}
+
+.gold-text {
+    color: #D4AF37;
+}
+
+/* Subtle texture */
+.silk-texture {
+    position: relative;
+}
+.silk-texture::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 60%);
+    z-index: 0;
+}
+
+/* Animations */
+.classy-observe {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.classy-observe.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+.is-visible .fade-in {
+    opacity: 1;
+}
+
+/* Ornaments */
+.ornament {
+    width: 60px;
+    height: 15px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ornament::before, .ornament::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: #D4AF37;
+}
+.ornament::before { left: 0; }
+.ornament::after { right: 0; }
+.ornament-diamond {
+    width: 6px;
+    height: 6px;
+    background: #D4AF37;
+    transform: rotate(45deg);
+}
+
+/* Inputs and Buttons */
+.classy-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.2);
+    color: #1A1A1A;
+    font-family: 'Montserrat', sans-serif;
+    padding: 12px 0;
+    font-size: 1rem;
+    transition: border-color 0.4s ease;
+    text-align: center;
+}
+.classy-input:focus {
+    outline: none;
+    border-bottom-color: #D4AF37;
+}
+
+.classy-btn {
+    background: transparent;
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 16px 48px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+.classy-btn:hover {
+    background: #D4AF37;
+    color: #FFFFFF;
+}

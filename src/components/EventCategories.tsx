@@ -1,58 +1,58 @@
 import React from 'react';
 import Link from 'next/link';
-import { Cake, Heart, GlassWater, Home } from 'lucide-react';
+import { Heart, Cake, Gem, PartyPopper, Baby, Sparkles } from 'lucide-react';
 
-const categories = [
-  {
-    title: 'Birthday',
-    description: 'Celebrate another year with fun and personalized birthday invitations.',
-    icon: Cake,
-    color: 'text-primary',
-    bgColor: 'bg-transparent',
-    href: '/events/birthday',
-  },
-  {
-    title: 'Wedding',
-    description: 'Elegant and timeless designs for your special day.',
-    icon: Heart,
-    color: 'text-primary',
-    bgColor: 'bg-transparent',
-    href: '/events/wedding',
-  },
+const occasions = [
+  { label: 'Weddings', icon: Heart, href: '/events/wedding' },
+  { label: 'Birthdays', icon: Cake, href: '/events/birthday' },
+  { label: 'Engagements', icon: Gem, href: '#contact' },
+  { label: 'Parties', icon: PartyPopper, href: '#contact' },
+  { label: 'Baby Showers', icon: Baby, href: '#contact' },
+  { label: 'More', icon: Sparkles, href: '#contact' },
 ];
 
 export default function EventCategories() {
   return (
-    <section id="categories" className="py-24 bg-background">
+    <section id="categories" className="py-16 md:py-28 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-serif font-bold text-primary sm:text-4xl uppercase tracking-wider">
-            Invitations for Every Occasion
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <p className="text-primary/60 uppercase tracking-[0.2em] text-xs font-semibold mb-3">All occasions</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary leading-tight">
+            Made for your moments.
           </h2>
-          <p className="mt-4 text-lg text-foreground">
-            Browse our curated collection of custom card designs tailored perfectly for your special moments.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {categories.map((category, index) => {
-            const Icon = category.icon;
+        {/* Occasions grid — 3 cols mobile, 6 desktop */}
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 max-w-4xl mx-auto mb-12">
+          {occasions.map((occasion) => {
+            const Icon = occasion.icon;
             return (
               <Link
-                key={index}
-                href={category.href}
-                className="group flex flex-col items-center text-center p-8 rounded-lg bg-background border border-primary hover:-translate-y-1 transition-all duration-300 cursor-pointer block"
+                key={occasion.label}
+                href={occasion.href}
+                className="group flex flex-col items-center gap-3 p-4 md:p-6 rounded-2xl border border-primary/15 bg-background hover:border-primary hover:bg-primary/5 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
               >
-                <div className={`p-4 rounded-full border border-primary ${category.bgColor} ${category.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon className="w-8 h-8" strokeWidth={1} />
+                <div className="p-3 rounded-full border border-primary/20 text-primary group-hover:border-primary group-hover:scale-110 transition-all duration-300">
+                  <Icon className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3 uppercase tracking-wide">{category.title}</h3>
-                <p className="text-foreground leading-relaxed text-sm">
-                  {category.description}
-                </p>
+                <span className="text-xs md:text-sm font-semibold text-foreground/70 group-hover:text-primary transition-colors text-center leading-tight">
+                  {occasion.label}
+                </span>
               </Link>
             );
           })}
+        </div>
+
+        {/* CTA button */}
+        <div className="text-center">
+          <Link
+            href="/events/wedding"
+            className="inline-flex items-center justify-center gap-2 px-10 py-4 border-2 border-primary text-base font-semibold rounded-full text-primary bg-transparent hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-sm"
+          >
+            <Sparkles className="w-4 h-4" />
+            Explore Designs
+          </Link>
         </div>
       </div>
     </section>
