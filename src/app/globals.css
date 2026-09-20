@@ -5,12 +5,12 @@
   --foreground: #4a3b32; /* Warm dark text */
   --primary: #993333; /* Crimson Red */
   --primary-foreground: #ffffff;
-  --secondary: #993333; /* Use primary for secondary elements to keep it monochromatic */
+  --secondary: #993333;
   --secondary-foreground: #ffffff;
   --card: #fdfbf7; /* Lighter cream for cards */
   --card-foreground: #4a3b32;
-  --border: #993333; /* Red borders */
-  --input: #993333; /* Red input borders */
+  --border: #993333;
+  --input: #993333;
   --ring: #993333;
 }
 
@@ -33,14 +33,18 @@
 
 html {
   scroll-behavior: smooth;
-}
-
-/* Offset anchors for fixed navbar */
-section[id] {
-  scroll-margin-top: 80px;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Offset anchors for fixed navbar */
+section[id] {
+  scroll-margin-top: 80px;
 }

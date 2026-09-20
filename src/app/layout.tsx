@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
@@ -13,9 +13,15 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
-  title: "Event Invitations | Custom Cards",
-  description: "Design and book custom cards for birthdays, weddings, and every memorable moment in between.",
+  title: "Lumina Cards | Custom Invitations & Event Cards",
+  description: "Design and book custom digital cards for birthdays, weddings, and every memorable moment.",
 };
 
 export default function RootLayout({
@@ -25,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} h-full antialiased scroll-smooth`}>
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="min-h-full flex flex-col font-sans overflow-x-hidden w-full max-w-[100vw]">
         <Navbar />
         {children}
       </body>

@@ -60,13 +60,13 @@ export default function HanddrawnTemplate() {
     return (
         <main className="handcrafted-template min-h-screen">
             {/* Hero Section */}
-            <section className="min-h-[90vh] flex flex-col items-center justify-center text-center p-6 relative">
-                <h1 className="font-bold text-4xl md:text-5xl uppercase tracking-wider red-ink mb-12 hand-observe">
+            <section className="min-h-[85vh] sm:min-h-[90vh] flex flex-col items-center justify-center text-center p-4 sm:p-6 relative pt-20 sm:pt-6">
+                <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl uppercase tracking-wider red-ink mb-8 sm:mb-12 hand-observe">
                     We're<br/>Getting<br/>Married!
                 </h1>
                 
                 {/* Holding Hands SVG Illustration */}
-                <div className="w-64 h-64 mb-8 red-ink animate-hand-float hand-observe">
+                <div className="w-48 h-48 sm:w-64 sm:h-64 mb-6 sm:mb-8 red-ink animate-hand-float hand-observe">
                     <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         {/* Abstract line art for holding hands */}
                         <path d="M40 120 L80 160 C90 170 110 170 120 160 L160 120" />
@@ -77,9 +77,9 @@ export default function HanddrawnTemplate() {
                     </svg>
                 </div>
 
-                <div className="hand-observe text-center mt-4">
-                    <h2 className="font-hand text-5xl md:text-6xl red-ink mb-2">Felix & Angel</h2>
-                    <p className="font-bold text-sm tracking-widest text-[#B22222]/70 uppercase mb-8">Sunday, February 1st 2026</p>
+                <div className="hand-observe text-center mt-2 sm:mt-4">
+                    <h2 className="font-hand text-4xl sm:text-5xl md:text-6xl red-ink mb-2">Felix & Angel</h2>
+                    <p className="font-bold text-xs sm:text-sm tracking-widest text-[#B22222]/70 uppercase mb-6 sm:mb-8">Sunday, February 1st 2026</p>
                     <button className="hand-btn">Open Invitation</button>
                 </div>
             </section>
@@ -216,37 +216,37 @@ export default function HanddrawnTemplate() {
             </section>
 
             {/* RSVP */}
-            <section className="py-24 px-6 text-center max-w-md mx-auto border-t-2 border-dashed border-[#B22222]/30">
-                <div className="hand-observe mb-12">
-                    <h2 className="text-[120px] leading-[0.8] font-bold red-ink tracking-tighter">RS<br/>VP</h2>
-                    <p className="font-hand text-2xl red-ink mt-8">Kindly RSVP by January 15th, 2026</p>
+            <section className="py-16 sm:py-24 px-4 sm:px-6 text-center max-w-md mx-auto border-t-2 border-dashed border-[#B22222]/30">
+                <div className="hand-observe mb-8 sm:mb-12">
+                    <h2 className="text-[70px] sm:text-[120px] leading-[0.8] font-bold red-ink tracking-tighter">RS<br/>VP</h2>
+                    <p className="font-hand text-xl sm:text-2xl red-ink mt-6 sm:mt-8">Kindly RSVP by January 15th, 2026</p>
                 </div>
 
                 {!isSuccess ? (
-                    <form onSubmit={handleRsvpSubmit} className="space-y-8 hand-observe text-left px-4">
+                    <form onSubmit={handleRsvpSubmit} className="space-y-6 sm:space-y-8 hand-observe text-left px-2 sm:px-4">
                         <div>
-                            <input type="text" placeholder="Your Name" required className="hand-input w-full" />
+                            <input type="text" placeholder="Your Name" required className="hand-input w-full text-base sm:text-lg" />
                         </div>
-                        <div className="flex gap-8 justify-center pt-4">
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-8 justify-center pt-2 sm:pt-4">
                             <label className="flex items-center gap-2 cursor-pointer">
                                 <input type="radio" name="attending" className="accent-[#B22222] w-5 h-5" required />
-                                <span className="font-hand text-2xl red-ink">Joyfully Accept</span>
+                                <span className="font-hand text-xl sm:text-2xl red-ink">Joyfully Accept</span>
                             </label>
                             <label className="flex items-center gap-2 cursor-pointer">
                                 <input type="radio" name="attending" className="accent-[#B22222] w-5 h-5" required />
-                                <span className="font-hand text-2xl red-ink">Regretfully Decline</span>
+                                <span className="font-hand text-xl sm:text-2xl red-ink">Regretfully Decline</span>
                             </label>
                         </div>
-                        <div className="pt-8 text-center">
+                        <div className="pt-4 sm:pt-8 text-center">
                             <button type="submit" disabled={isSubmitting} className="hand-btn w-full">
                                 {isSubmitting ? 'Sending...' : 'Send RSVP'}
                             </button>
                         </div>
                     </form>
                 ) : (
-                    <div className="hand-observe text-center border-2 border-dashed border-[#B22222] p-8 rounded-xl bg-white/50">
-                        <h3 className="font-hand text-4xl red-ink mb-4">Thank You!</h3>
-                        <p className="font-bold text-[#B22222]/70">We received your RSVP.</p>
+                    <div className="hand-observe text-center border-2 border-dashed border-[#B22222] p-6 sm:p-8 rounded-xl bg-white/50">
+                        <h3 className="font-hand text-3xl sm:text-4xl red-ink mb-2 sm:mb-4">Thank You!</h3>
+                        <p className="font-bold text-sm sm:text-base text-[#B22222]/70">We received your RSVP.</p>
                     </div>
                 )}
             </section>

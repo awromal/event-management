@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Loader2, ChevronDown, Check } from 'lucide-react';
 
-// Country list with dial code, expected digit length (local number), and example format
+// Country list with dial code, expected digit length, and example format
 const countries = [
   { code: 'IN', name: 'India', dial: '+91', digits: 10, example: '98765 43210' },
   { code: 'US', name: 'United States', dial: '+1', digits: 10, example: '(555) 123-4567' },
@@ -27,8 +27,7 @@ const countries = [
   { code: 'NG', name: 'Nigeria', dial: '+234', digits: 10, example: '802 123 4567' },
 ];
 
-// Country flag from code using regional indicator symbols
-function CountryFlag({ code, size = 'text-lg' }: { code: string; size?: string }) {
+function CountryFlag({ code, size = 'text-base sm:text-lg' }: { code: string; size?: string }) {
   const codePoints = code
     .toUpperCase()
     .split('')
@@ -104,7 +103,7 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
     const digitsOnly = value.replace(/\D/g, '');
     if (!digitsOnly) return '';
     if (digitsOnly.length < selectedCountry.digits) {
-      return `Enter ${selectedCountry.digits} digits for ${selectedCountry.name} (${digitsOnly.length}/${selectedCountry.digits})`;
+      return `Enter ${selectedCountry.digits} digits (${digitsOnly.length}/${selectedCountry.digits})`;
     }
     return '';
   };
@@ -121,7 +120,6 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
     if (phoneTouched) setPhoneError(validatePhone(limited));
   };
 
-  // Re-validate phone when country changes
   useEffect(() => {
     const limited = phone.slice(0, selectedCountry.digits);
     setPhone(limited);
@@ -147,39 +145,39 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
     }, 1500);
   };
 
-  const inputBase = "w-full px-4 py-3 rounded-lg border outline-none transition-all duration-200 bg-background";
-  const inputValid = "border-primary focus:ring-2 focus:ring-primary/30 focus:border-primary";
+  const inputBase = "w-full px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-lg border outline-none transition-all duration-200 bg-background";
+  const inputValid = "border-primary/40 focus:border-primary focus:ring-2 focus:ring-primary/20";
   const inputError = "border-red-400 bg-red-50/30 focus:ring-2 focus:ring-red-300 focus:border-red-400";
 
   return (
-    <section id="contact" className="py-24 bg-background relative">
+    <section id="contact" className="py-16 sm:py-24 bg-background relative">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-serif font-bold text-primary sm:text-4xl">
+        <div className="text-center mb-10 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-primary">
             Start Your Inquiry
           </h2>
-          <p className="mt-4 text-lg text-foreground">
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-foreground/80">
             Let us know the details of your event, and we&apos;ll get back to you with a custom quote.
           </p>
         </div>
 
-        <div className="bg-background p-8 sm:p-10 rounded-lg shadow-sm border border-primary">
+        <div className="bg-card p-5 sm:p-8 md:p-10 rounded-2xl shadow-sm border border-primary/20">
           {isSubmitted ? (
-            <div className="text-center py-12">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-600 mb-6 border border-green-200">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center py-10 sm:py-12">
+              <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-100 text-green-600 mb-5 border border-green-200">
+                <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-primary mb-2">Inquiry Submitted!</h3>
-              <p className="text-foreground">Thank you for reaching out. We will get back to you shortly.</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary mb-2">Inquiry Submitted!</h3>
+              <p className="text-sm sm:text-base text-foreground/80">Thank you for reaching out. We will get back to you shortly.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6" noValidate>
               {/* Row 1: Full Name + Email */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-1.5">
-                  <label htmlFor="fullName" className="block text-sm font-medium text-stone-700">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div className="space-y-1 sm:space-y-1.5">
+                  <label htmlFor="fullName" className="block text-xs sm:text-sm font-medium text-foreground/90">
                     Full Name <span className="text-red-400">*</span>
                   </label>
                   <input
@@ -190,8 +188,8 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
                     placeholder="Jane Doe"
                   />
                 </div>
-                <div className="space-y-1.5">
-                  <label htmlFor="email" className="block text-sm font-medium text-stone-700">
+                <div className="space-y-1 sm:space-y-1.5">
+                  <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-foreground/90">
                     Email Address <span className="text-red-400">*</span>
                   </label>
                   <input
@@ -206,50 +204,47 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
                   />
                   {emailTouched && emailError && (
                     <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
-                      <svg className="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                      </svg>
                       {emailError}
                     </p>
                   )}
                 </div>
               </div>
 
-              {/* Row 2: Phone Number (full width) */}
-              <div className="space-y-1.5">
-                <label htmlFor="phone" className="block text-sm font-medium text-foreground">
+              {/* Row 2: Phone Number */}
+              <div className="space-y-1 sm:space-y-1.5">
+                <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-foreground/90">
                   Phone Number
                 </label>
                 <div className="flex" ref={dropdownRef}>
                   {/* Custom Country Selector */}
-                  <div className="relative">
+                  <div className="relative shrink-0">
                     <button
                       type="button"
                       onClick={() => { setIsCountryOpen(!isCountryOpen); setCountrySearch(''); }}
-                      className="flex items-center gap-2 px-3 py-3 rounded-l-lg border border-r-0 border-primary bg-background hover:bg-primary/5 transition-colors h-full min-w-[110px]"
+                      className="flex items-center gap-1.5 px-2.5 sm:px-3 py-2.5 sm:py-3 rounded-l-lg border border-r-0 border-primary/40 bg-background hover:bg-primary/5 transition-colors h-full text-xs sm:text-sm"
                     >
                       <CountryFlag code={selectedCountry.code} />
-                      <span className="text-sm font-medium text-foreground">{selectedCountry.dial}</span>
+                      <span className="font-medium text-foreground">{selectedCountry.dial}</span>
                       <ChevronDown className={`w-3.5 h-3.5 text-primary transition-transform ${isCountryOpen ? 'rotate-180' : ''}`} />
                     </button>
 
                     {isCountryOpen && (
-                      <div className="absolute z-50 top-full left-0 mt-1 w-72 bg-background border border-primary rounded-lg shadow-xl overflow-hidden">
+                      <div className="absolute z-50 top-full left-0 mt-1 w-64 sm:w-72 max-w-[calc(100vw-2.5rem)] bg-background border border-primary/30 rounded-lg shadow-xl overflow-hidden">
                         {/* Search */}
-                        <div className="p-2 border-b border-stone-100">
+                        <div className="p-2 border-b border-border/40">
                           <input
                             type="text"
                             value={countrySearch}
                             onChange={(e) => setCountrySearch(e.target.value)}
                             placeholder="Search country..."
-                            className="w-full px-3 py-2 text-sm rounded-lg border border-stone-200 outline-none focus:border-primary"
+                            className="w-full px-3 py-1.5 text-xs sm:text-sm rounded-md border border-border outline-none focus:border-primary"
                             autoFocus
                           />
                         </div>
                         {/* Options */}
-                        <div className="max-h-56 overflow-y-auto">
+                        <div className="max-h-52 overflow-y-auto">
                           {filteredCountries.length === 0 ? (
-                            <div className="px-4 py-3 text-sm text-stone-400 text-center">No country found</div>
+                            <div className="px-4 py-3 text-xs sm:text-sm text-foreground/50 text-center">No country found</div>
                           ) : (
                             filteredCountries.map((c) => (
                               <button
@@ -260,15 +255,15 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
                                   setIsCountryOpen(false);
                                   setCountrySearch('');
                                 }}
-                                className={`w-full flex items-center gap-3 px-4 py-2.5 text-left text-sm hover:bg-primary/5 transition-colors ${
-                                  c.code === countryCode ? 'bg-primary/10' : ''
+                                className={`w-full flex items-center gap-2.5 px-3.5 py-2 text-left text-xs sm:text-sm hover:bg-primary/5 transition-colors ${
+                                  c.code === countryCode ? 'bg-primary/10 font-semibold' : ''
                                 }`}
                               >
                                 <CountryFlag code={c.code} />
-                                <span className="flex-1 text-foreground">{c.name}</span>
+                                <span className="flex-1 text-foreground truncate">{c.name}</span>
                                 <span className="text-primary/70 text-xs">{c.dial}</span>
                                 {c.code === countryCode && (
-                                  <Check className="w-4 h-4 text-primary" />
+                                  <Check className="w-3.5 h-3.5 text-primary shrink-0" />
                                 )}
                               </button>
                             ))
@@ -285,7 +280,7 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
                     value={phone}
                     onChange={(e) => handlePhoneChange(e.target.value)}
                     onBlur={() => { setPhoneTouched(true); setPhoneError(validatePhone(phone)); }}
-                    className={`flex-1 px-4 py-3 rounded-r-lg border outline-none transition-all duration-200 ${
+                    className={`flex-1 min-w-0 px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-r-lg border outline-none transition-all duration-200 ${
                       phoneTouched && phoneError ? inputError : inputValid
                     }`}
                     placeholder={selectedCountry.example}
@@ -294,28 +289,24 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
                   />
                 </div>
 
-                {/* Phone validation feedback */}
                 {phoneTouched && phoneError ? (
-                  <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
-                    <svg className="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                    </svg>
+                  <p className="text-red-500 text-xs mt-1">
                     {phoneError}
                   </p>
                 ) : phone ? (
-                  <p className="text-stone-400 text-xs mt-1">
+                  <p className="text-foreground/50 text-xs mt-1">
                     {phone.length}/{selectedCountry.digits} digits
                     {phone.length === selectedCountry.digits && (
-                      <span className="text-green-500 ml-1.5">✓ Valid</span>
+                      <span className="text-green-600 font-medium ml-1.5">✓ Complete</span>
                     )}
                   </p>
                 ) : null}
               </div>
 
               {/* Row 3: Event Type + Event Date */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-1.5">
-                  <label htmlFor="eventType" className="block text-sm font-medium text-stone-700">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div className="space-y-1 sm:space-y-1.5">
+                  <label htmlFor="eventType" className="block text-xs sm:text-sm font-medium text-foreground/90">
                     Event Type <span className="text-red-400">*</span>
                   </label>
                   <select
@@ -323,15 +314,15 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
                     required
                     value={eventType}
                     onChange={(e) => setEventType(e.target.value)}
-                    className={`${inputBase} ${inputValid} bg-white`}
+                    className={`${inputBase} ${inputValid} bg-background`}
                   >
                     <option value="">Select an event type</option>
                     <option value="birthday">Birthday</option>
                     <option value="wedding">Wedding</option>
                   </select>
                 </div>
-                <div className="space-y-1.5">
-                  <label htmlFor="eventDate" className="block text-sm font-medium text-stone-700">
+                <div className="space-y-1 sm:space-y-1.5">
+                  <label htmlFor="eventDate" className="block text-xs sm:text-sm font-medium text-foreground/90">
                     Event Date <span className="text-red-400">*</span>
                   </label>
                   <input
@@ -344,20 +335,22 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
               </div>
 
               {/* Row 4: Special Requests */}
-              <div className="space-y-1.5">
-                <label htmlFor="requests" className="block text-sm font-medium text-stone-700">Special Requests</label>
+              <div className="space-y-1 sm:space-y-1.5">
+                <label htmlFor="requests" className="block text-xs sm:text-sm font-medium text-foreground/90">
+                  Special Requests
+                </label>
                 <textarea
                   id="requests"
-                  rows={4}
+                  rows={3}
                   className={`${inputBase} ${inputValid} resize-none`}
-                  placeholder="Tell us about your theme, color preferences, or any specific ideas you have in mind..."
-                ></textarea>
+                  placeholder="Tell us about your theme, color preferences, or any specific ideas..."
+                />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-primary-foreground bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed mt-2"
+                className="w-full flex items-center justify-center px-6 py-3.5 sm:py-4 text-sm sm:text-base font-semibold rounded-full text-primary-foreground bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed mt-2 active:scale-95"
               >
                 {isSubmitting ? (
                   <>
@@ -371,11 +364,6 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
             </form>
           )}
         </div>
-      </div>
-      
-      {/* Decorative Blob */}
-      <div className="absolute bottom-0 left-0 w-full h-[500px] overflow-hidden -z-10 pointer-events-none opacity-20">
-        <div className="absolute -bottom-[20%] -left-[10%] w-[40%] h-[80%] rounded-full bg-secondary/20 blur-3xl"></div>
       </div>
     </section>
   );
