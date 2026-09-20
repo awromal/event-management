@@ -71,12 +71,12 @@ export default async function EventTemplatePage({ params }: { params: Promise<{ 
               </div>
               {/* Overlay on hover */}
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                <a 
-                  href="#contact"
+                <Link 
+                  href={`/templates/${eventType}-sample-${idx + 1}`}
                   className="bg-background text-primary px-6 py-3 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 cursor-pointer hover:bg-primary hover:text-background"
                 >
-                  Select Design
-                </a>
+                  Preview Template
+                </Link>
               </div>
             </div>
           ))}

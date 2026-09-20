@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+
+.classic-template {
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #FFFFFF;
+    color: #1A1A1A;
+    overflow-x: hidden;
+}
+
+.font-script {
+    font-family: 'Great Vibes', cursive !important;
+}
+
+/* Formal Invitation Border */
+.formal-border {
+    position: relative;
+}
+.formal-border::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px solid #993333;
+    pointer-events: none;
+    z-index: 40;
+}
+.formal-border::after {
+    content: '';
+    position: absolute;
+    inset: 16px;
+    border: 2px solid #993333;
+    pointer-events: none;
+    z-index: 40;
+}
+
+/* Scroll Animation */
+.classic-observe {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 1s ease-out;
+}
+.classic-observe.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.line-grow {
+    width: 0;
+    transition: width 1.5s ease-out;
+}
+.is-visible .line-grow {
+    width: 100px; /* or full width depending on context */
+}
+
+/* Button */
+.classic-btn {
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+.classic-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #993333;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+.classic-btn:hover::before {
+    transform: scaleY(1);
+}
+.classic-btn:hover {
+    color: white !important;
+}

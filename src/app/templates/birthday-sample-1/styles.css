@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap');
+
+.playful-template {
+    font-family: 'Nunito', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #F8F9FA;
+    color: #333333;
+    overflow-x: hidden;
+}
+
+.font-fun {
+    font-family: 'Fredoka One', cursive !important;
+}
+
+/* Fun Gradient Background */
+.fun-gradient {
+    background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);
+}
+
+/* Confetti animations */
+@keyframes floatUp {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+.confetti {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background-color: #FF6B6B;
+    animation: floatUp 5s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+.confetti:nth-child(2n) { background-color: #4ECDC4; animation-duration: 6s; animation-delay: 1s; }
+.confetti:nth-child(3n) { background-color: #FFE66D; animation-duration: 4s; animation-delay: 2s; }
+.confetti:nth-child(4n) { background-color: #9D4EDD; animation-duration: 7s; animation-delay: 0.5s; }
+
+/* Observers */
+.playful-observe {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncy transition */
+}
+.playful-observe.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Polaroid Gallery */
+.polaroid {
+    background: white;
+    padding: 15px 15px 40px 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transform: rotate(-3deg);
+    transition: all 0.3s ease;
+}
+.polaroid:nth-child(2n) { transform: rotate(4deg); }
+.polaroid:nth-child(3n) { transform: rotate(-5deg); }
+.polaroid:hover {
+    transform: scale(1.05) rotate(0deg);
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Buttons */
+.fun-btn {
+    background: #FF6B6B;
+    color: white;
+    border-radius: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.2s ease;
+    box-shadow: 0 6px 0 #D93838;
+}
+.fun-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 #D93838;
+}
+.fun-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #D93838;
+}
+
+.fun-input {
+    background: #FFFFFF;
+    border: 3px solid #E0E0E0;
+    border-radius: 20px;
+    padding: 15px 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.fun-input:focus {
+    border-color: #4ECDC4;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.2);
+}

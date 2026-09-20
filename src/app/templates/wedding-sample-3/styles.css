@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+.regal-template {
+    font-family: 'Playfair Display', serif;
+    scroll-behavior: smooth;
+    background-color: #2b0c0c; /* Deep rich burgundy/black */
+    color: #FDFBF7;
+    overflow-x: hidden;
+}
+
+.font-regal {
+    font-family: 'Cinzel', serif !important;
+}
+
+/* Mandala/Damask Texture Background */
+.regal-texture {
+    position: relative;
+}
+.regal-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    /* Use a repeating radial gradient to simulate an intricate pattern */
+    background-image: 
+        radial-gradient(circle at 50% 50%, #990000 1%, transparent 2%),
+        radial-gradient(circle at 0% 0%, #7A1F1F 2%, transparent 3%),
+        radial-gradient(circle at 100% 100%, #7A1F1F 2%, transparent 3%);
+    background-size: 60px 60px;
+    opacity: 0.15;
+    z-index: 0;
+}
+
+/* Gold Text Effect */
+.gold-text {
+    background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+}
+
+.gold-border {
+    border-image: linear-gradient(to bottom right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C) 1;
+    border-width: 2px;
+    border-style: solid;
+}
+
+/* Animations */
+.regal-observe {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.regal-observe.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Velvet Form */
+.velvet-input {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(191, 149, 63, 0.3);
+    color: #FDFBF7;
+    transition: all 0.4s ease;
+}
+.velvet-input:focus {
+    border-color: #BF953F;
+    background: rgba(0,0,0,0.6);
+    box-shadow: 0 0 15px rgba(191, 149, 63, 0.2);
+}
+
+.gold-btn {
+    background: linear-gradient(to right, #BF953F, #B38728);
+    color: #1A1A1A;
+    transition: all 0.5s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+.gold-btn:hover {
+    background: linear-gradient(to right, #FCF6BA, #FBF5B7);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(191, 149, 63, 0.4);
+}
