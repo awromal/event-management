@@ -1,5 +1,5 @@
 import React from 'react';
-import { Palette, Pencil, Send } from 'lucide-react';
+import { Palette, Pencil, Send, ChevronRight, ChevronDown } from 'lucide-react';
 
 const steps = [
   {
@@ -21,55 +21,77 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-16 md:py-28 bg-primary">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="py-24 md:py-32 bg-primary relative overflow-hidden">
+      {/* Organic Background Elements */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-white/5 rounded-[100%] blur-[100px] pointer-events-none" />
+      <div className="absolute -bottom-[20%] -right-[10%] w-[500px] h-[500px] bg-black/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section heading */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-primary-foreground/60 uppercase tracking-[0.2em] text-xs font-semibold mb-3">Three easy steps</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary-foreground leading-tight">
+        <div className="text-center max-w-3xl mx-auto mb-20 md:mb-28">
+          <p className="inline-block px-5 py-2 mb-6 rounded-full bg-white/10 text-white/90 uppercase tracking-[0.2em] text-xs font-semibold backdrop-blur-md border border-white/20 shadow-sm">
+            Three easy steps
+          </p>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white leading-tight">
             Simple from start to send.
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <div
-                key={index}
-                className="relative flex flex-col items-center text-center bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-2xl p-8 md:p-10 group hover:bg-primary-foreground/20 transition-all duration-300"
-              >
-                {/* Step number */}
-                <span className="absolute top-5 left-6 text-primary-foreground/20 text-5xl font-bold font-serif select-none">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
+        {/* Steps container */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Subtle connecting line - Mobile (vertical) */}
+          <div className="md:hidden absolute left-[39px] top-10 bottom-10 w-[2px] bg-gradient-to-b from-transparent via-white/20 to-transparent z-0" />
+          
+          {/* Subtle connecting line - Desktop (horizontal) */}
+          <div className="hidden md:block absolute top-[2.5rem] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent z-0" />
 
-                {/* Icon */}
-                <div className="mt-6 mb-6 p-4 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-8 h-8 text-primary-foreground" strokeWidth={1.5} />
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <div
+                  key={index}
+                  className="relative group flex flex-row md:flex-col items-start md:items-center gap-6 md:gap-0"
+                >
+                  {/* Arrow to Next Step (Desktop) */}
+                  {index < steps.length - 1 && (
+                    <div className="hidden md:flex absolute top-[2.5rem] -translate-y-1/2 -right-[1.5rem] md:-right-[2rem] lg:-right-[2.5rem] w-12 h-12 items-center justify-center text-white/40 z-20">
+                      <ChevronRight className="w-8 h-8" strokeWidth={1.5} />
+                    </div>
+                  )}
 
-                {/* Title — exact tagline */}
-                <h3 className="text-xl md:text-2xl font-serif font-bold text-primary-foreground mb-2">
-                  {step.step}
-                </h3>
+                  {/* Arrow to Next Step (Mobile) */}
+                  {index < steps.length - 1 && (
+                    <div className="md:hidden absolute top-[5.5rem] left-[27px] w-6 h-6 flex items-center justify-center text-white/40 z-20 bg-primary">
+                      <ChevronDown className="w-5 h-5" strokeWidth={2} />
+                    </div>
+                  )}
 
-                {/* Sub — exact tagline */}
-                <p className="text-primary-foreground/70 text-sm md:text-base leading-relaxed">
-                  {step.description}
-                </p>
-
-                {/* Arrow to next (desktop only) */}
-                {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 -translate-y-1/2 z-20 text-primary-foreground/40">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+                  {/* Icon Circle */}
+                  <div className="relative z-10 md:mb-8 shrink-0">
+                    <div className="relative w-20 h-20 flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-lg transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:bg-white group-hover:shadow-2xl group-hover:shadow-black/10">
+                      <Icon className="w-8 h-8 text-white transition-all duration-500 ease-out group-hover:scale-110 group-hover:text-primary" strokeWidth={1.5} />
+                    </div>
                   </div>
-                )}
-              </div>
-            );
-          })}
+
+                  {/* Text Content */}
+                  <div className="text-left md:text-center relative z-10 pt-3 md:pt-0">
+                    <div className="inline-flex items-center justify-center md:justify-center mb-3">
+                      <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10 backdrop-blur-sm">
+                        Step 0{index + 1}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-serif font-bold text-white mb-2 md:mb-4">
+                      {step.step}
+                    </h3>
+                    <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-[260px] md:mx-auto">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
