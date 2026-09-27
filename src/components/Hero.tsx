@@ -6,11 +6,6 @@ export default function Hero() {
     <section className="relative bg-background overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24 md:pt-44 md:pb-32 lg:pt-48 lg:pb-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 text-center">
 
-        {/* Eyebrow pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-[11px] sm:text-xs font-semibold tracking-widest uppercase mb-8 sm:mb-10">
-          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-          Digital Invitations
-        </div>
 
         {/* Main headline */}
         <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight font-serif font-extrabold text-primary max-w-4xl mx-auto leading-[1.15]">

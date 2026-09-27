@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, Sparkles } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import BookingForm from '@/components/BookingForm';
 import TemplateCard from '@/components/TemplateCard';
 
@@ -111,7 +111,6 @@ export default async function EventTemplatePage({ params }: { params: Promise<{ 
         
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-primary/10 text-primary mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
             <span>Click any card below to open interactive live preview</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl tracking-tight font-serif font-extrabold text-primary uppercase">

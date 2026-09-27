@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Cake, Heart, Sparkles, ArrowRight } from 'lucide-react';
+import { Cake, Heart, ArrowRight } from 'lucide-react';
 
 const events = [
   {
@@ -59,8 +59,6 @@ export default function EventSections({ onSelectEvent }: EventSectionsProps) {
                     <div className="border border-primary text-primary p-4 sm:p-5 rounded-full mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-500">
                       <Icon className="w-9 h-9 sm:w-12 sm:h-12" strokeWidth={1.25} />
                     </div>
-                    <Sparkles className="absolute top-4 right-4 sm:top-6 sm:right-6 w-4 h-4 sm:w-5 sm:h-5 text-primary opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
-                    <Sparkles className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 w-3 h-3 sm:w-4 sm:h-4 text-primary opacity-20 group-hover:opacity-80 transition-opacity duration-500" />
                     <p className="text-xs sm:text-sm font-bold tracking-widest uppercase text-primary/80 text-center px-2">
                       {event.tagline}
                     </p>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Heart, Cake, Gem, PartyPopper, Baby, Sparkles } from 'lucide-react';
+import { Heart, Cake, Gem, PartyPopper, Baby, Plus } from 'lucide-react';
 
 const occasions = [
   { label: 'Weddings', icon: Heart, href: '/events/wedding' },
@@ -8,7 +8,7 @@ const occasions = [
   { label: 'Engagements', icon: Gem, href: '#contact' },
   { label: 'Parties', icon: PartyPopper, href: '#contact' },
   { label: 'Baby Showers', icon: Baby, href: '#contact' },
-  { label: 'More', icon: Sparkles, href: '#contact' },
+  { label: 'More', icon: Plus, href: '#contact' },
 ];
 
 export default function EventCategories() {
@@ -52,7 +52,6 @@ export default function EventCategories() {
             href="/events/wedding"
             className="inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 border-2 border-primary text-sm sm:text-base font-semibold rounded-full text-primary bg-transparent hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-sm active:scale-95"
           >
-            <Sparkles className="w-4 h-4" />
             Explore Designs
           </Link>
         </div>

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowLeft, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowLeft } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -80,7 +80,6 @@ export default function Navbar() {
               href="/#contact"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-5 sm:py-2 text-xs sm:text-sm font-bold rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-sm active:scale-95 shrink-0"
             >
-              <Sparkles className="w-3.5 h-3.5 hidden sm:inline" />
               <span>Customize</span>
             </Link>
           </div>

@@ -48,6 +48,7 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
   // Form fields
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [requests, setRequests] = useState('');
   const [countryCode, setCountryCode] = useState('IN');
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [countrySearch, setCountrySearch] = useState('');
@@ -163,7 +164,7 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
 
         <div className="bg-card p-5 sm:p-8 md:p-10 rounded-2xl shadow-sm border border-primary/20">
           {isSubmitted ? (
-            <div className="text-center py-10 sm:py-12">
+            <div className="text-center py-10 sm:py-12 animate-scale-in">
               <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-100 text-green-600 mb-5 border border-green-200">
                 <svg className="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -185,7 +186,6 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
                     id="fullName"
                     required
                     className={`${inputBase} ${inputValid}`}
-                    placeholder="Jane Doe"
                   />
                 </div>
                 <div className="space-y-1 sm:space-y-1.5">
@@ -200,7 +200,6 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
                     onChange={(e) => handleEmailChange(e.target.value)}
                     onBlur={() => { setEmailTouched(true); setEmailError(validateEmail(email)); }}
                     className={`${inputBase} ${emailTouched && emailError ? inputError : inputValid}`}
-                    placeholder="jane@example.com"
                   />
                   {emailTouched && emailError && (
                     <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
@@ -283,7 +282,6 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
                     className={`flex-1 min-w-0 px-3.5 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base rounded-r-lg border outline-none transition-all duration-200 ${
                       phoneTouched && phoneError ? inputError : inputValid
                     }`}
-                    placeholder={selectedCountry.example}
                     maxLength={selectedCountry.digits}
                     inputMode="numeric"
                   />
@@ -342,9 +340,15 @@ export default function BookingForm({ defaultEventType }: BookingFormProps) {
                 <textarea
                   id="requests"
                   rows={3}
+                  maxLength={500}
+                  value={requests}
+                  onChange={(e) => setRequests(e.target.value)}
                   className={`${inputBase} ${inputValid} resize-none`}
-                  placeholder="Tell us about your theme, color preferences, or any specific ideas..."
+                  placeholder="e.g. I would like a rustic wedding invitation with a floral theme."
                 />
+                <div className="text-right text-xs text-foreground/50 mt-1">
+                  {requests.length}/500
+                </div>
               </div>
 
               <button
